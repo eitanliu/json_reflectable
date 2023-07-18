@@ -8,6 +8,35 @@ class JsonReflector extends Reflectable {
           invokingCapability,
         );
 
+  /// parse iterable
+  /// [iterable] iterable map
+  /// [name] constructor name
+  /// [type] instance class type
+  Iterable<T> formIterable<T>(
+    Iterable iterable, {
+    String name = "fromJson",
+    Type? type,
+  }) {
+    return iterable.map((e) {
+      return formJson<T>(Map.castFrom(e), name: name, type: type);
+    });
+  }
+
+  /// parse iterable
+  /// [iterable] iterable map
+  /// [name] constructor name
+  /// [type] instance class type
+  Iterable<T?> formIterableNullable<T>(
+    Iterable iterable, {
+    String name = "fromJson",
+    Type? type,
+  }) {
+    return iterable.map((e) {
+      if (e == null) return null;
+      return formJson<T>(Map.castFrom(e), name: name, type: type);
+    });
+  }
+
   /// parse json
   /// [json] json map
   /// [name] constructor name

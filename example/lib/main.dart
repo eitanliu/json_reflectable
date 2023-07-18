@@ -53,4 +53,10 @@ void testReflector() {
   final instance = classMirror.newInstance("fromJson", [jsonMap]);
   print(jsonEncode(instance));
   print(jsonEncode(jsonReflector.formJson(jsonMap, type: type)));
+
+  // using iterable
+  final iterable = Iterable.generate(3, (index) => jsonMap);
+  final list = jsonReflector.formIterable<Text01Entity>(iterable).toList();
+  print("list ${list.runtimeType}");
+  print(jsonEncode(list));
 }

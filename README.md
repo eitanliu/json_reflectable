@@ -72,6 +72,13 @@ Using class mirror
 TextEntity instance = jsonReflector.formJson<TextEntity>(testJson);
 print(instance.toJson());
 ```
+Using iterable
+```dart
+final iterable = Iterable.generate(3, (index) => jsonMap);
+final list = jsonReflector.formIterable<Text01Entity>(iterable).toList();
+print("list ${list.runtimeType}");
+print(jsonEncode(list));
+```
 
 ## Additional information
 
